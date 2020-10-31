@@ -18,6 +18,17 @@ def read_list(list_path:Path):
             list[from_col[i]] = to_col[i]
         return list
     
+    if str(list_path).endswith('.txt'):
+        
+        f = open(list_path)
+        list = {}
+        
+        for i in f.readlines():
+            pair = i.split(';')
+            list[pair[0]] = pair[1]
+        
+        return list
+    
     else:
         secho('El formato de la lista no es soportado')
     

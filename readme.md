@@ -14,3 +14,7 @@
 
 * columns are named from and to
 * separator is ';' 
+
+### TXT format
+* no column names, same structure as csv
+* separator is ';'
