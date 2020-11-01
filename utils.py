@@ -32,4 +32,4 @@ def read_list(list_path:Path):
     else:
         secho('El formato de la lista no es soportado')
     
-read_list('./list.csv')
+# read_list('./list.csv')
