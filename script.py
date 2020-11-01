@@ -25,11 +25,10 @@ def rename_files(folder_path: Path = Argument(
 ),
 ):
     list = read_list(list_path)
-    
     for cp,dir,files in walk(folder_path):
         for file in files:
             if file in list:
-                move(path.join(cp,file), path.join(cp, list[file]))
+                move(path.join(cp,file), path.join(cp, list[file].replace('\n', '')))
 
 if __name__ == '__main__':
     app()
