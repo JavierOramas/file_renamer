@@ -20,7 +20,7 @@ def read_list(list_path:Path):
     
     if str(list_path).endswith('.txt'):
         
-        f = open(list_path)
+        f = open(list_path, encoding="utf-8")
         list = {}
         
         for i in f.readlines():
