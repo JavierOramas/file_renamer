@@ -1,6 +1,10 @@
 from pathlib import Path
 import pandas as pd
 from typer import secho
+import os
+from shutil import move
+# from os import path
+
 def read_list(list_path:Path):
     
     if str(list_path).endswith('.csv'):
@@ -31,5 +35,14 @@ def read_list(list_path:Path):
     
     else:
         secho('El formato de la lista no es soportado')
-    
+
+def move_files(path:Path):
+    for dir,cp,files in os.walk(path):
+        for file in files:
+            # print(dir)
+            folder_name = str(file[:str(file).rfind('.')])
+            # print(folder_name)
+            os.makedirs(os.path.join(dir,folder_name), exist_ok=True)
+            move(os.path.join(dir,file),os.path.join(dir,folder_name)) 
+            
 # read_list('./list.csv')

@@ -3,7 +3,7 @@ from shutil import move
 import pandas as pd
 from typer import Typer,Argument,Option
 from pathlib import Path
-from utils import read_list
+from utils import read_list, move_files
 
 app = Typer()
 
@@ -30,5 +30,18 @@ def rename_files(folder_path: Path = Argument(
             if file in list:
                 move(path.join(cp,file), path.join(cp, list[file].replace('\n', '')))
 
+
+@app.command(help='Move files')
+def move_to_folders(path: Path = Argument(
+    default='.',
+    exists=True,
+    file_okay=True,
+    dir_okay=True,
+    readable=True,
+    resolve_path=True
+),
+):
+    move_files(path)
+    
 if __name__ == '__main__':
     app()
