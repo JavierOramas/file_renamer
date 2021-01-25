@@ -36,14 +36,15 @@ def read_list(list_path:Path):
     else:
         secho('El formato de la lista no es soportado')
 
-def move_files(path:Path):
+def move_files(path:Path, create_folders:bool):
     for dir,cp,files in os.walk(path):
         for file in files:
             # print(dir)
             folder_name = os.path.join(dir,str(file[:str(file).rfind('.')]))
             # print(folder_name)
             os.makedirs(folder_name, exist_ok=True)
-            create_folders_inside(path)
+            if create_folders:
+                create_folders_inside(path)
             move(os.path.join(dir,file),folder_name) 
             
 # read_list('./list.csv')

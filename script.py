@@ -40,8 +40,11 @@ def move_to_folders(path: Path = Argument(
     readable=True,
     resolve_path=True
 ),
+create_folders: bool = Option(
+    default=False,
+),
 ):
-    move_files(path)
+    move_files(path, create_folders)
 
 @app.command(help='Create Folders inside the generates folders')
 def create_folders(path: Path = Argument(
