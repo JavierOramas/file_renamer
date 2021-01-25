@@ -3,7 +3,7 @@ from shutil import move
 import pandas as pd
 from typer import Typer,Argument,Option
 from pathlib import Path
-from utils import read_list, move_files
+from utils import read_list, move_files, create_folders_inside
 
 app = Typer()
 
@@ -42,6 +42,18 @@ def move_to_folders(path: Path = Argument(
 ),
 ):
     move_files(path)
-    
+
+@app.command(help='Create Folders inside the generates folders')
+def create_folders(path: Path = Argument(
+    default='.',
+    exists=True,
+    file_okay=True,
+    dir_okay=True,
+    readable=True,
+    resolve_path=True
+),
+):
+    create_folders_inside(path)
+      
 if __name__ == '__main__':
     app()
