@@ -40,9 +40,11 @@ def move_files(path:Path):
     for dir,cp,files in os.walk(path):
         for file in files:
             # print(dir)
-            folder_name = str(file[:str(file).rfind('.')])
-            # print(folder_name)
-            os.makedirs(os.path.join(dir,folder_name), exist_ok=True)
-            move(os.path.join(dir,file),os.path.join(dir,folder_name)) 
+            folder_name = os.path.join(dir,str(file[:str(file).rfind('.')]))
+            print(folder_name)
+            os.makedirs(folder_name, exist_ok=True)
+            for i in ['metadata', 'access', 'preservation', 'service', 'submissionDocumentation']:
+                os.makedirs(os.path.join(folder_name, i), exist_ok=True)
+            move(os.path.join(dir,file),folder_name) 
             
 # read_list('./list.csv')
