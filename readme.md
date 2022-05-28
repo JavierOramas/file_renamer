@@ -12,7 +12,7 @@
 
 ### CSV format
 
-* columns are named from and to
+* columns are named "from" and "to"
 * separator is ';' 
 
 ### TXT format
