@@ -6,7 +6,7 @@ from shutil import move
 # from os import path
 
 def read_list(list_path:Path):
-    
+
     if str(list_path).endswith('.csv'):
         list = pd.read_csv(list_path, sep=';')
         from_col = []
@@ -15,24 +15,27 @@ def read_list(list_path:Path):
             from_col.append(i)
         for i in list['to']:
             to_col.append(i)
-        
+
         list = {}
-        
+
         for i in range(len(from_col)):
             list[from_col[i]] = to_col[i]
         return list
-    
+
     if str(list_path).endswith('.txt'):
-        
+
         f = open(list_path, encoding="utf-8")
         list = {}
-        
+
         for i in f.readlines():
             pair = i.split(';')
-            list[pair[0]] = pair[1]
-        
+            try:
+                list[pair[0]] = pair[1]
+            except:
+                pass
+
         return list
-    
+
     else:
         secho('El formato de la lista no es soportado')
 
