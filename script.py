@@ -28,6 +28,7 @@ def rename_files(folder_path: Path = Argument(
     for cp,dir,files in walk(folder_path):
         for file in files:
             if file in list:
+                print(f"renaming: {file} to {list[file].replace('\n', ''))}")
                 move(path.join(cp,file), path.join(cp, list[file].replace('\n', '')))
 
 

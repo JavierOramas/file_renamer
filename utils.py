@@ -32,6 +32,7 @@ def read_list(list_path:Path):
             try:
                 list[pair[0]] = pair[1]
             except:
+                secho("Hubo errores")
                 pass
 
         return list
